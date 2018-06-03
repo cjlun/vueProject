@@ -12,7 +12,7 @@
           <div class="item-title">{{item.imgTitle}}</div>
           <div class="item-grade"><span class="star">★★★★★</span>&nbsp;&nbsp;&nbsp;{{item.imgReview}}条评论</div>
           <div class="item-priceArea">
-           <div>          
+           <div>
             <span class="item-price">￥<em>{{item.imgPrice}}</em></span>起
            </div>
            <div>{{item.imgAddress}}</div>
@@ -148,7 +148,7 @@ export default {
         imgReview: '648',
         imgPrice: '90',
         imgAddress: '盐田区',
-        imgFeature: ''     
+        imgFeature: ''
       }, {
         id: '014',
         imgUrl: 'http://img1.qunarzz.com/sight/p0/201303/04/3dc3e87356026a63c8d65eac.jpg_200x200_1de448b6.jpg',
