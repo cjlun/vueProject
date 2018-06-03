@@ -92,7 +92,6 @@ export default {
     .content-item
       display: inline-block
       width: 2rem
-      height: 154px
       white-space: nowrap
       padding: .06rem 0 .2rem
       text-align: center
