@@ -6,6 +6,7 @@
     <home-hot></home-hot>
     <home-like></home-like>
     <home-weekend></home-weekend>
+    <home-footer></home-footer>
   </div>
 </template>
 
@@ -16,6 +17,7 @@ import HomeIcon from './components/Icon'
 import HomeHot from './components/Hot'
 import HomeLike from './components/Like'
 import HomeWeekend from './components/Weekend'
+import HomeFooter from './components/Footer'
 export default {
   name: 'Home',
   components: {
@@ -24,7 +26,8 @@ export default {
     HomeIcon,
     HomeHot,
     HomeLike,
-    HomeWeekend
+    HomeWeekend,
+    HomeFooter
   }
 }
 </script>
