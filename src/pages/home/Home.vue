@@ -1,8 +1,8 @@
 <template>
   <div class="home">
     <home-header></home-header>
-    <home-swiper></home-swiper>
-    <home-icon></home-icon>
+    <home-swiper :swiper="swiper"></home-swiper>
+    <home-icon :icon="icon"></home-icon>
     <home-hot></home-hot>
     <home-like></home-like>
     <home-weekend></home-weekend>
@@ -18,8 +18,15 @@ import HomeHot from './components/Hot'
 import HomeLike from './components/Like'
 import HomeWeekend from './components/Weekend'
 import HomeFooter from './components/Footer'
+import axios from 'axios'
 export default {
   name: 'Home',
+  data () {
+    return {
+      swiper: [],
+      icon: []
+    }
+  },
   components: {
     HomeHeader,
     HomeSwiper,
@@ -28,6 +35,18 @@ export default {
     HomeLike,
     HomeWeekend,
     HomeFooter
+  },
+  methods: {
+    getHomeInfo () {
+      axios.get('/static/serverData/home.json').then(this.getHomeInfoSucc)
+    },
+    getHomeInfoSucc (res) {
+      this.swiper = res.data.data.swiper
+      this.icon = res.data.data.icon
+    }
+  },
+  mounted () {
+    this.getHomeInfo()
   }
 }
 </script>
