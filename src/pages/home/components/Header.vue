@@ -7,7 +7,7 @@
       <span class="iconfont search-icon">&#xe632;</span>输入城市/景点/游玩主题
     </div>
     <router-link tag="div" to="/city" class="header-select">
-      城市<span class="iconfont">&#xe611;</span>
+      {{$store.state.city}}<span class="iconfont">&#xe611;</span>
     </router-link>
   </div>
 </template>
