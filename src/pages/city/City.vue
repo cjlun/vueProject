@@ -1,13 +1,39 @@
 <template>
+ <div class="city">
   <city-header></city-header>
+  <city-list :hotCities="hotCities" :cities="cities"></city-list>
+ </div>
 </template>
 
 <script>
 import CityHeader from './components/Header'
+import CityList from './components/List'
+import axios from 'axios'
 export default {
   name: 'City',
   components: {
-    CityHeader
+    CityHeader,
+    CityList
+  },
+  data () {
+    return {
+      hotCities: [],
+      cities: []
+    }
+  },
+  methods: {
+    getCityInfo () {
+      axios.get('/static/serverData/city.json').then(this.getCityInfoSucc)
+    },
+    getCityInfoSucc (res) {
+      if (res.data.ret && res.data.data) {
+        this.hotCities = res.data.data.hotCities
+        this.cities = res.data.data.cities
+      }
+    }
+  },
+  mounted () {
+    this.getCityInfo()
   }
 }
 </script>
