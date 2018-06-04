@@ -7,21 +7,41 @@
         <li class="type-city-item" v-for="item of hotCities" :key="item.id">{{item.name}}</li>
       </ul>
     </div>
-    <div class="type-city" v-for="(item,key) of cities" :key="key">
+    <div class="type-city" v-for="(item,key) of cities" :key="key" :ref="key">
       <div class="type-city-title">{{key}}</div>
       <ul class="type-city-items">
         <li class="type-city-item" v-for="it of item" :key="it.id">{{it.name}}</li>
       </ul>
     </div>
    </div>
+   <city-alphabet :cities="cities" :alphabets="alphabets" @alphabetChange="alphabetChange"></city-alphabet>
   </div>
 </template>
 
 <script>
 import Bscroll from 'better-scroll'
+import CityAlphabet from './Alphabet'
 export default {
   name: 'CityList',
-  props: ['hotCities', 'cities'],
+  props: ['hotCities', 'cities', 'alphabets'],
+  data () {
+    return {
+      alphabet: ''
+    }
+  },
+  components: {
+    CityAlphabet
+  },
+  watch: {
+    alphabet () {
+      this.scroll.scrollToElement(this.$refs[this.alphabet][0])
+    }
+  },
+  methods: {
+    alphabetChange (alphabet) {
+      this.alphabet = alphabet
+    }
+  },
   mounted () {
     this.scroll = new Bscroll(this.$refs.list)
   }
